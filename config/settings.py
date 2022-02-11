@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'accounts',
-    'pages'
+    'pages',
+    'books'
 ]
 LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_LOGOUT_REDIRECT = 'home'
