@@ -145,4 +145,6 @@ STATICFILES_FINDERS=[
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 DEFAULT_FROM_EMAIL='admin@djangobookstore.com'
