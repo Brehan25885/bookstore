@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'allauth',
     'allauth.account',
+    'debug_toolbar',
     'accounts',
     'pages',
     'books'
@@ -69,9 +70,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware'
 ]
 AUTH_USER_MODEL= 'accounts.CustomUser'
 ROOT_URLCONF = 'config.urls'
+CACHE_MIDDLEWARE_ALIAS='default'
+CACHE_MIDDLE_SECONDS=604800
+CACHE_MIDDLEWARE_KEY_PERFIX = ''
 
 TEMPLATES = [
     {
@@ -120,7 +126,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+import socket
+hostname, _,ips=socket.gethostbyname_ex(socket.gethostname())
+INTERNAL_IPS = [ip[:-1]+"1" for ip in ips]
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
