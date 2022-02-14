@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'crispy_forms',
@@ -76,8 +77,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware'
+    'django.middleware.cache.FetchFromCacheMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 AUTH_USER_MODEL= 'accounts.CustomUser'
 ROOT_URLCONF = 'config.urls'
 CACHE_MIDDLEWARE_ALIAS='default'
